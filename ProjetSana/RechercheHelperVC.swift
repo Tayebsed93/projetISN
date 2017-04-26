@@ -1,24 +1,14 @@
 //
-//  InscriptionBDD.swift
+//  RechercheHelperVC.swift
 //  ProjetSana
 //
-//  Created by Tayeb Sedraia on 17/04/2017.
-//  Copyright © 2017 Tayeb Sedraia. All rights reserved.
 //
 
-//
-//  InscriptionVCHelper.swift
-//  MyCoreDataApplication
-//
-//  Created by Tayeb Sedraia on 09/12/2016.
-//  Copyright © 2016 Digipolitan. All rights reserved.
-//
-
-import UIKit
+import Foundation
 
 import CoreData
 
-extension InscriptionVC {
+extension RechercheVC {
     
     func clearData() {
         
@@ -26,7 +16,7 @@ extension InscriptionVC {
             
             do {
                 
-                let entityNames = ["User"]
+                let entityNames = ["Eleve"]
                 
                 for entityName in entityNames {
                     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
@@ -48,18 +38,25 @@ extension InscriptionVC {
         }
     }
     
-    func setupData(_nom: String, _prenom: String, _mdp: String) {
+    func setupData() {
         
-        //clearData()
-        
+        clearData()
         
         if let context = DataManager.shared.objectContext {
             
+            let eleve1 = NSEntityDescription.insertNewObject(forEntityName: "Eleve", into: context) as! Eleve
+            eleve1.name = "Sedraia"
+            eleve1.prenom = "Sana"
+            eleve1.etude = "1ère S"
+            //eleve1.photo = UIImage(data: profileImageName as! Data)
             
-            let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: context) as! User
-            user.nom = _nom
-            user.prenom = _prenom
-            user.motdepasse = _mdp
+            let eleve2 = NSEntityDescription.insertNewObject(forEntityName: "Eleve", into: context) as! Eleve
+            eleve2.name = "Sedraia"
+            eleve2.prenom = "Tayeb"
+            eleve2.etude = "Master"
+            //eleve1.photo = UIImage(data: profileImageName as! Data)
+            
+            
             
             
             do {
@@ -69,45 +66,33 @@ extension InscriptionVC {
             }
         }
         
-        loadData()
+        //loadData()
         
     }
     
     
-    func loadData() {
-        
-        if let context = DataManager.shared.objectContext {
-            
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-            
-            do {
-                
-                users = try(context.fetch(fetchRequest)) as? [User]
-                
-            } catch let err {
-                print(err)
-            }
-            
-        }
-    }
-    
-    func loadDataUserCurrent() {
+    func loadData(_cleRecherche: String) {
         
         if let context = DataManager.shared.objectContext {
             
             //Avant il y avait juste ça
             //let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Eleve")
             
-            
+            ///Ajouter
             let managedObjectContext: NSManagedObjectContext
-            let predicate = NSPredicate(format: "nom == %@ AND prenom == %@ AND motdepasse == %@", nomTxt.text!, PrenomTxt.text!, MdpTxt.text!)
+            let predicate = NSPredicate(format: "etude == %@", _cleRecherche)
             
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: "User")
-            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: "Eleve")
             fetchRequest.predicate = predicate
+            print(predicate.description)
+            
+            //fetchRequest.sortDescriptors = [] //optionally you can specify the order in which entities should ordered after fetch finishes
+            
+            ///Fin ajout
             do {
                 
-                users = try(context.fetch(fetchRequest)) as? [User]
+                eleves = try(context.fetch(fetchRequest)) as? [Eleve]
+                print(eleves?.count)
                 
                 
             } catch let err {
@@ -117,7 +102,9 @@ extension InscriptionVC {
         }
     }
     
+    
 }
+
 
 
 

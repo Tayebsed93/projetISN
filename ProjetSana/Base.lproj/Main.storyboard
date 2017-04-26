@@ -379,10 +379,10 @@
             </objects>
             <point key="canvasLocation" x="-79" y="982"/>
         </scene>
-        <!--Accueil-->
+        <!--ConnexionVC-->
         <scene sceneID="Xlt-J5-1bY">
             <objects>
-                <viewController id="Zde-6h-KfG" customClass="Accueil" customModule="ProjetSana" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Zde-6h-KfG" customClass="ConnexionVC" customModule="ProjetSana" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8zP-Yt-bIT"/>
                         <viewControllerLayoutGuide type="bottom" id="53P-Ym-V4l"/>

@@ -2,8 +2,6 @@
 //  RechercheVC.swift
 //  ProjetSana
 //
-//  Created by Tayeb Sedraia on 03/04/2017.
-//  Copyright © 2017 Tayeb Sedraia. All rights reserved.
 //
 
 import UIKit

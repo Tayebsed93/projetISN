@@ -2,8 +2,6 @@
 //  AjoutEleveBDD.swift
 //  ProjetSana
 //
-//  Created by Tayeb Sedraia on 22/02/2017.
-//  Copyright © 2017 Tayeb Sedraia. All rights reserved.
 //
 
 import Foundation

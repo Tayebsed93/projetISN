@@ -2,8 +2,6 @@
 //  ViewController.swift
 //  ProjetSana
 //
-//  Created by Tayeb Sedraia on 19/02/2017.
-//  Copyright © 2017 Tayeb Sedraia. All rights reserved.
 //
 
 import UIKit
